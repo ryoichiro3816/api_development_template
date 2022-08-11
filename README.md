@@ -16,15 +16,14 @@ $ docker-compose run --rm api bundle exec rails new . --api -d mysql
 ```
 
 ## api/config/database.ymlを書き換え
-```
+```api/config/database.yml
 default: &default
   adapter: postgresql
   encoding: unicode
   username: root←ここを追加
   password: password←ここを追加
   host: db←ここを追加
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
