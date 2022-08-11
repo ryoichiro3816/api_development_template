@@ -3,7 +3,7 @@
 Rails開発テンプレ
 
 ```
-$ docker-compose run --rm frontend npm install
+$ docker-compose build
 ```
 
 ## frontend
