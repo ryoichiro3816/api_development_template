@@ -12,6 +12,7 @@ $ docker-compose run --rm front yarn create next-app .
 ```
 
 ## backend
+```
 $ docker-compose run --rm api bundle exec rails new . --api -d mysql
 ```
 
