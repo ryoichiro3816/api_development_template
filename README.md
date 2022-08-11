@@ -21,16 +21,19 @@ $ docker-compose run --rm api bundle exec rails new . --api -d mysql
 default: &default
   adapter: postgresql
   encoding: unicode
+```diff_ruby
 + username: root
 + password: password
 + host: db
-
+```
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
+```diff_ruby
 - database: app_development  
 + database: postgres
+```
 ```
 
 ## start containers
