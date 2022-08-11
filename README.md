@@ -2,37 +2,9 @@
 
 Rails開発テンプレ
 
-```
-$ docker-compose build
-```
-
 ## frontend
 ```
-$ docker-compose run --rm front yarn create next-app .
-```
-
-## backend
-```
-$ docker-compose run --rm api bundle exec rails new . --api -d mysql
-```
-
-## api/config/database.ymlを書き換え
-```api/config/database.yml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-+ username: root
-+ password: password
-+ host: db
-
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-development:
-  <<: *default
-
-- database: app_development  
-+ database: postgres
-
+$ docker-compose run --rm front npm install
 ```
 
 ## start containers
