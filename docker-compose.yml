@@ -1,0 +1,38 @@
+version: '3.7'
+
+services: 
+  db:
+    container_name: psql_server
+    image: postgres
+    volumes:
+      - psgl_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DATABASE: app_development
+    ports:
+      - 3308:3306
+
+  api:
+    tty: true
+    depends_on:
+      - db
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api:/app
+    command: rails server -b 0.0.0.0
+  front: 
+    build:
+      context: ./front/
+      dockerfile: Dockerfile
+    volumes:
+      - ./front/app:/usr/src/app
+    command: 'yarn dev'
+    ports:
+      - "8000:3000"
+volumes:
+  psgl_data:
